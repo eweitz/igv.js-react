@@ -3,7 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 
 // The line below is enabled by ES6 export in igv.js.
-import igv from 'igv';
+import igv from 'tmp_es6_igv';
 
 var igvStyle = {
   paddingTop: '10px',
@@ -31,7 +31,7 @@ class AppIgv extends Component {
   componentDidMount() {
     var igvContainer = document.getElementById('igv-div');
     var igvOptions = {genome: 'hg38', locus: 'BRCA1'};
-    return igv.createBrowser(igvContainer, igvOptions);;
+    return igv.createBrowser(igvContainer, igvOptions);
   }
 
   render() {
