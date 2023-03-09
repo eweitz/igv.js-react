@@ -1,9 +1,7 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-// The line below is enabled by ES6 export in igv.js.
-import igv from 'tmp_es6_igv';
+import igv from 'igv';
 
 var igvStyle = {
   paddingTop: '10px',
