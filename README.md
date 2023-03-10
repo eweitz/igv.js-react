@@ -3,7 +3,7 @@ This is a minimal example of integrating the [igv.js](https://github.com/igvteam
 
 # Install
 ```
-git clone https://github.com/eweitz/igv.js-react
+git clone https://github.com/jrobinso/igv.js-react
 cd igv.js-react
 npm install
 npm start
