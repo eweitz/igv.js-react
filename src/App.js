@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { createRef, Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import igv from 'igv';
@@ -26,15 +26,22 @@ class App extends Component {
 
 class AppIgv extends Component {
 
+  constructor(props) {
+    super(props)
+    this.container = createRef(null)
+  }
+
+
   componentDidMount() {
-    var igvContainer = document.getElementById('igv-div');
+    //var igvContainer = document.getElementById('igv-div');
     var igvOptions = {genome: 'hg38', locus: 'BRCA1'};
-    return igv.createBrowser(igvContainer, igvOptions);
+    //return igv.createBrowser(igvContainer, igvOptions);
+    return igv.createBrowser(this.container.current, igvOptions);
   }
 
   render() {
     return (
-      <div id="igv-div" style={igvStyle}></div>
+      <div id="igv-div" ref={this.container}  style={igvStyle}></div>
     );
   }
 }
