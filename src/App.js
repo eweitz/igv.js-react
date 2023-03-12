@@ -1,9 +1,7 @@
-import React, { Component } from 'react';
+import React, { createRef, Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-
-// The line below is enabled by ES6 export in igv.js.
-import igv from 'tmp_es6_igv';
+import igv from 'igv';
 
 var igvStyle = {
   paddingTop: '10px',
@@ -28,15 +26,23 @@ class App extends Component {
 
 class AppIgv extends Component {
 
+  constructor(props) {
+    super(props)
+    // Declare reference object for the dom node that will contain the igv.js component
+    this.container = createRef(null)
+  }
+
+
   componentDidMount() {
-    var igvContainer = document.getElementById('igv-div');
-    var igvOptions = {genome: 'hg38', locus: 'BRCA1'};
-    return igv.createBrowser(igvContainer, igvOptions);
+    // Create the igv.js component.
+    const igvOptions = {genome: 'hg38', locus: 'BRCA1'};
+    return igv.createBrowser(this.container.current, igvOptions);
   }
 
   render() {
+    // Return the div that will contain igv.js
     return (
-      <div id="igv-div" style={igvStyle}></div>
+      <div ref={this.container}  style={igvStyle}></div>
     );
   }
 }
